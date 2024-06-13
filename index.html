@@ -1,0 +1,48 @@
+<body>
+
+<div class="container">
+  <h2>業務報告フォーム</h2>
+  <form id="reportForm">
+    <label for="date">日付:</label><br>
+    <input type="date" id="date" name="date" required><br><br>
+    
+    <label for="content">報告内容:</label><br>
+    <textarea id="content" name="content" rows="4" required></textarea><br><br>
+    
+    <label for="person">担当者:</label><br>
+    <input type="text" id="person" name="person" required><br><br>
+    
+    <button type="submit">送信</button>
+  </form>
+  
+  <div id="response"></div>
+</div>
+
+<script>
+  document.getElementById('reportForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var date = document.getElementById('date').value;
+    var content = document.getElementById('content').value;
+    var person = document.getElementById('person').value;
+    
+    var formData = new FormData();
+    formData.append('date', date);
+    formData.append('content', content);
+    formData.append('person', person);
+    
+    fetch('https://script.google.com/macros/s/AKfycbxjhfFgRlg-fZUjU8_z17uyrC2fJCkk4A3lVroqOUp3AmNWXnUEvdPjbXgkA4gP_S0/exec', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('response').innerText = data;
+    })
+    .catch(error => {
+      document.getElementById('response').innerText = 'エラーが発生しました: ' + error.message;
+    });
+  });
+</script>
+
+</body>
