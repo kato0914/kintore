@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>業務報告アプリ</title>
-  <link rel="stylesheet" href="https://kato0914.github.io/houkoku/style.css"/>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>筋トレ管理アプリ</title>
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<!-- partial:index.partial.html -->
 <body>
 
 <div class="container">
-  <h2>業務報告フォーム</h2>
-  <form id="reportForm">
+  <h2>筋トレ管理アプリ</h2>
+  <form id="workoutForm">
     <label for="date">日付:</label><br>
     <input type="date" id="date" name="date" required><br><br>
     
-    <label for="content">報告内容:</label><br>
-    <textarea id="content" name="content" rows="4" required></textarea><br><br>
+    <label>筋トレの種類:</label><br>
+    <label>
+      <input type="radio" name="type" value="ショルダープレス" required> ショルダープレス
+    </label><br>
+    <label>
+      <input type="radio" name="type" value="チェストプレス" required> チェストプレス
+    </label><br>
+    <label>
+      <input type="radio" name="type" value="ラットプルダウン" required> ラットプルダウン
+    </label><br>
+    <label>
+      <input type="radio" name="type" value="レッグプレス" required> レッグプレス
+    </label><br>
+    <label>
+      <input type="radio" name="type" value="アブベンチ" required> アブベンチ
+    </label><br>
+    <label>
+      <input type="radio" name="type" value="トレッドミル" required> トレッドミル
+    </label><br><br>
     
-    <label for="person">担当者:</label><br>
-    <input type="text" id="person" name="person" required><br><br>
+    <label for="reps">回数:</label><br>
+    <input type="number" id="reps" name="reps" required><br><br>
     
     <button type="submit">送信</button>
   </form>
@@ -29,35 +44,35 @@
 </div>
 
 <script>
-  document.getElementById('reportForm').addEventListener('submit', function(e) {
+  document.getElementById('workoutForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     var date = document.getElementById('date').value;
-    var content = document.getElementById('content').value;
-    var person = document.getElementById('person').value;
+    var type = document.querySelector('input[name="type"]:checked').value;
+    var reps = document.getElementById('reps').value;
     
     var formData = new FormData();
     formData.append('date', date);
-    formData.append('content', content);
-    formData.append('person', person);
+    formData.append('type', type);
+    formData.append('reps', reps);
     
-    fetch('https://script.google.com/macros/s/AKfycbxjhfFgRlg-fZUjU8_z17uyrC2fJCkk4A3lVroqOUp3AmNWXnUEvdPjbXgkA4gP_S0/exec', {
+    fetch('https://script.google.com/macros/s/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/exec', {
       method: 'POST',
       body: formData
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
-      document.getElementById('response').innerText = data;
+      if (data.result === "success") {
+        document.getElementById('response').innerText = "データが正常に送信されました。";
+      } else {
+        document.getElementById('response').innerText = "エラーが発生しました: " + data.message;
+      }
     })
     .catch(error => {
       document.getElementById('response').innerText = 'エラーが発生しました: ' + error.message;
     });
   });
 </script>
-
-</body>
-<!-- partial -->
-  <script  src="./script.js"></script>
 
 </body>
 </html>
