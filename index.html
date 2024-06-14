@@ -25,7 +25,6 @@
   }
 </script>
     
-    
     <label>筋トレの種類:</label><br>
     <div class="radio-container">
       <label>
@@ -49,7 +48,19 @@
     </div><br><br>
     
     <label for="reps">回数:</label><br>
-    <input type="number" id="reps" name="reps" required><br><br>
+    <select id="reps" name="reps" required>
+      <option value="" disabled selected>選択してください</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+      <option value="30">30</option>
+      <option value="35">35</option>
+      <option value="40">40</option>
+      <option value="45">45</option>
+      <option value="50">50</option>
+    </select><br><br>
     
     <button type="submit">送信</button>
   </form>
