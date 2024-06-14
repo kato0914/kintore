@@ -1,35 +1,30 @@
-// Google Apps ScriptのウェブアプリケーションのURL
-var scriptUrl = "https://script.google.com/macros/s/AKfycbxjhfFgRlg-fZUjU8_z17uyrC2fJCkk4A3lVroqOUp3AmNWXnUEvdPjbXgkA4gP_S0/exec";
-
-// フォームの送信処理
-function submitForm() {
+document.getElementById('workoutForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
   var date = document.getElementById('date').value;
-  var content = document.getElementById('content').value;
-  var person = document.getElementById('person').value;
+  var weight = document.getElementById('weight').value;
+  var reps = document.getElementById('reps').value;
+  var type = document.querySelector('input[name="type"]:checked').value;
   
-  var formData = {
-    "date": date,
-    "content": content,
-    "person": person
-  };
+  var formData = new FormData();
+  formData.append('date', date);
+  formData.append('weight', weight);
+  formData.append('reps', reps);
+  formData.append('type', type);
   
-  fetch(scriptUrl, {
+  fetch('https://script.google.com/macros/s/AKfycbzk090FT4t9PRbGWJAke_2xc1Iv2bfXdb1lAdpVs9uHUvO2aK3tOZ4KIZB8dgecuYU/exec', {
     method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify(formData)
-  }).then(response => {
-    console.log('Success:', response);
-    // 成功したら、適切な処理を記述
-  }).catch(error => {
-    console.error('Error:', error);
-    // エラー処理
-  });
-}
-
-class InputDateDefault extends HTMLInputElement {
-    connectedCallback() {
-        let now = new Date();
-        this.value = now.toLocaleDateString('sv-SE');
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.result === "success") {
+      document.getElementById('response').innerText = "データが正常に送信されました。";
+    } else {
+      document.getElementById('response').innerText = "エラーが発生しました: " + data.message;
     }
-}
-customElements.define('default-date', InputDateDefault, { extends: 'input', });
+  })
+  .catch(error => {
+    document.getElementById('response').innerText = 'エラーが発生しました: ' + error.message;
+  });
+});
