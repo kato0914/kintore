@@ -12,16 +12,16 @@
   <h2>筋トレ管理アプリ</h2>
   <form id="workoutForm">
     <label for="date">日付:</label><br>
-    <input type="date" id="today" required><br><br>
+    <input type="date" id="date" name="date" required><br><br>
 
 <script type="text/javascript">
   window.onload = function () {
-    var today = new Date();
-    today.setDate(today.getDate());
-    var yyyy = today.getFullYear();
-    var mm = ("0" + (today.getMonth() + 1)).slice(-2);
-    var dd = ("0" + today.getDate()).slice(-2);
-    document.getElementById("today").value = yyyy + '-' + mm + '-' + dd;
+    var date = new Date();
+    date.setDate(date.getDate());
+    var yyyy = date.getFullYear();
+    var mm = ("0" + (date.getMonth() + 1)).slice(-2);
+    var dd = ("0" + date.getDate()).slice(-2);
+    document.getElementById("date").value = yyyy + '-' + mm + '-' + dd;
   }
 </script>
     
@@ -81,7 +81,7 @@
     formData.append('type', type);
     formData.append('reps', reps);
     
-    fetch('https://script.google.com/macros/s/AKfycbxjhfFgRlg-fZUjU8_z17uyrC2fJCkk4A3lVroqOUp3AmNWXnUEvdPjbXgkA4gP_S0/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbxdx1UTJsw9pGKwCZmoyUY9fTGoIK_ofvp3o43sS9jmwiJ7gNm2CYO9mQhrs2lSUiA/exec', {
       method: 'POST',
       body: formData
     })
