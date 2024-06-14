@@ -15,24 +15,26 @@
     <input type="date" id="date" name="date" required><br><br>
     
     <label>筋トレの種類:</label><br>
-    <label>
-      <input type="radio" name="type" value="ショルダープレス" required> ショルダープレス
-    </label><br>
-    <label>
-      <input type="radio" name="type" value="チェストプレス" required> チェストプレス
-    </label><br>
-    <label>
-      <input type="radio" name="type" value="ラットプルダウン" required> ラットプルダウン
-    </label><br>
-    <label>
-      <input type="radio" name="type" value="レッグプレス" required> レッグプレス
-    </label><br>
-    <label>
-      <input type="radio" name="type" value="アブベンチ" required> アブベンチ
-    </label><br>
-    <label>
-      <input type="radio" name="type" value="トレッドミル" required> トレッドミル
-    </label><br><br>
+    <div class="radio-container">
+      <label>
+        <input type="radio" name="type" value="ショルダープレス" required> ショルダープレス
+      </label>
+      <label>
+        <input type="radio" name="type" value="チェストプレス" required> チェストプレス
+      </label>
+      <label>
+        <input type="radio" name="type" value="ラットプルダウン" required> ラットプルダウン
+      </label>
+      <label>
+        <input type="radio" name="type" value="レッグプレス" required> レッグプレス
+      </label>
+      <label>
+        <input type="radio" name="type" value="アブベンチ" required> アブベンチ
+      </label>
+      <label>
+        <input type="radio" name="type" value="トレッドミル" required> トレッドミル
+      </label>
+    </div><br><br>
     
     <label for="reps">回数:</label><br>
     <input type="number" id="reps" name="reps" required><br><br>
@@ -56,7 +58,7 @@
     formData.append('type', type);
     formData.append('reps', reps);
     
-    fetch('https://script.google.com/macros/s/AKfycbxjhfFgRlg-fZUjU8_z17uyrC2fJCkk4A3lVroqOUp3AmNWXnUEvdPjbXgkA4gP_S0/exec', {
+    fetch('https://script.google.com/macros/s/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/exec', {
       method: 'POST',
       body: formData
     })
