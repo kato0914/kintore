@@ -75,3 +75,15 @@ button:hover {
   margin-top: 20px;
   color: #333;
 }
+
+.iframe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+iframe {
+  border: none;
+}
