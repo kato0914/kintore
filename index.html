@@ -12,7 +12,19 @@
   <h2>筋トレ管理アプリ</h2>
   <form id="workoutForm">
     <label for="date">日付:</label><br>
-    <input type="date" id="date" name="today" id="today" required><br><br>
+    <input type="date" id="today" required><br><br>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var today = new Date();
+    today.setDate(today.getDate());
+    var yyyy = today.getFullYear();
+    var mm = ("0" + (today.getMonth() + 1)).slice(-2);
+    var dd = ("0" + today.getDate()).slice(-2);
+    document.getElementById("today").value = yyyy + '-' + mm + '-' + dd;
+  }
+</script>
+    
     
     <label>筋トレの種類:</label><br>
     <div class="radio-container">
