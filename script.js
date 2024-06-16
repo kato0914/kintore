@@ -12,7 +12,7 @@ document.getElementById('workoutForm').addEventListener('submit', function(e) {
   formData.append('reps', reps);
   formData.append('type', type);
   
-  fetch('https://script.google.com/macros/s/AKfycbzk090FT4t9PRbGWJAke_2xc1Iv2bfXdb1lAdpVs9uHUvO2aK3tOZ4KIZB8dgecuYU/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbxWj8tpi823LpkuPSUm2i7ut7I6P_3OAHn8mMPMeqClXXja-IJKwWjitYRb5NGyyvk/exec', {
     method: 'POST',
     body: formData
   })
