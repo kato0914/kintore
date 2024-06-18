@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>筋トレ管理アプリ</title>
+
+<!--GitHub Pagesを使う場合、下記のように表記しないとCSSが効かない-->
 <link rel="stylesheet" href="https://kato0914.github.io/kintore/style.css"/>
+  
 </head>
 <body>
 
@@ -97,39 +100,7 @@
 </a>
 
 </div>
-
-<script>
-  document.getElementById('workoutForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    var date = document.getElementById('date').value;
-    var weight = document.getElementById('weight').value;
-    var reps = document.getElementById('reps').value;
-    var type = document.querySelector('input[name="type"]:checked').value;
-    
-    var formData = new FormData();
-    formData.append('date', date);
-    formData.append('weight', weight);
-    formData.append('reps', reps);
-    formData.append('type', type);
-    
-    fetch('https://script.google.com/macros/s/AKfycbxq60aYPhQXN-IoMGwuSsKUNPAH9FrxhnzzNlQbZliyreFiWvAJPbB_unh2sNtS4g/exec', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.result === "success") {
-        document.getElementById('response').innerText = "データが正常に送信されました。";
-      } else {
-        document.getElementById('response').innerText = "エラーが発生しました: " + data.message;
-      }
-    })
-    .catch(error => {
-      document.getElementById('response').innerText = 'エラーが発生しました: ' + error.message;
-    });
-  });
-</script>
-
+<!--script.jsを指定-->
+<script src="https://kato0914.github.io/kintore/script.js"></script>
 </body>
 </html>
