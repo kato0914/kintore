@@ -1,6 +1,6 @@
     :root {
       --primary-color: #3498db;
-      --secondary-color: #2ecc71;
+      --secondary-color: #0070FF;
       --background-color: #ecf0f1;
       --text-color: #2c3e50;
       --card-background: #ffffff;
@@ -145,12 +145,13 @@
       display: inline-flex;
       align-items: center;
       margin-top: 1rem;
-      color: var(--primary-color);
+      color: var(--secondary-color);
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
       background-color: #F1F2F6;
       display: block;
+      text-align: center;
     }
     
     a i {
