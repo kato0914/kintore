@@ -76,35 +76,39 @@
       margin-bottom: 1rem;
     }
     
-    .radio-container label {
+    .radio-option {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       background-color: #f1f2f6;
       padding: 0.5rem;
       border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.3s;
-      text-align: center;
-      height: 80px;
     }
     
-    .radio-container label:hover {
+    .radio-option:hover {
       background-color: #d2d3db;
     }
     
-    .radio-container input[type="radio"] {
-      margin-bottom: 0.5rem;
-    }
-    
-    .radio-container i {
-      font-size: 1.5rem;
+    .radio-content {
+      display: flex;
+      align-items: center;
       margin-bottom: 0.3rem;
     }
     
-    .radio-container span {
+    .radio-option input[type="radio"] {
+      margin: 0;
+      margin-right: 0.5rem;
+    }
+    
+    .radio-option i {
+      font-size: 1.5rem;
+    }
+    
+    .radio-option span {
       font-size: 0.8rem;
+      text-align: center;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
