@@ -1,5 +1,9 @@
 iframe {
-  margin: 10px;
+  margin: 10px 0;
+}
+
+.reps iflame {
+  margin: 0 10px;
 }
 
 .iframe-container{
